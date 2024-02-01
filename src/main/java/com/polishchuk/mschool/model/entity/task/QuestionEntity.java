@@ -4,10 +4,7 @@ import com.polishchuk.mschool.enums.QuestionType;
 import com.polishchuk.mschool.model.entity.base.BaseEntity;
 import com.polishchuk.mschool.model.entity.base.BaseTaskItemEntity;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import lombok.experimental.SuperBuilder;
 
 import java.util.List;

@@ -4,12 +4,10 @@ import com.polishchuk.mschool.model.entity.base.BaseEntity;
 import com.polishchuk.mschool.model.entity.base.BaseTaskItemEntity;
 import com.polishchuk.mschool.model.entity.user.UserEntity;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import lombok.experimental.SuperBuilder;
 
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
@@ -27,7 +25,7 @@ public class TaskEntity extends BaseTaskItemEntity {
 //	private Long user_id;
 
 	@ManyToOne
-	@JoinColumn(name = "id", nullable = false)
+	@JoinColumn(name = "p_item_id", nullable = false)
 	private UserEntity user;
 
 //	@Column(nullable = false)
@@ -56,11 +54,20 @@ public class TaskEntity extends BaseTaskItemEntity {
 	private List<UserEntity> users;
 
 	@OneToMany(mappedBy = "task")
-	@OrderBy("user.surname, user.name")
+//	@OrderBy("user.surname, user.name")
+//	@OrderBy("user")
 	private Set<PassedTestingEntity> passed_testing_by_users;
 
 	@PrePersist
 	protected void onCreate() {
 		date_created = new Date();
 	}
+
+	public static final Comparator<TaskEntity> DATE_COMPARATOR = new Comparator<TaskEntity>() {
+		@Override
+		public int compare(TaskEntity o1, TaskEntity o2) {
+			return o1.date_created.compareTo(o2.date_created);
+		}
+	};
+
 }

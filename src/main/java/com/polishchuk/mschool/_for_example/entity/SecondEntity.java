@@ -13,8 +13,8 @@ import java.util.Date;
 @SuperBuilder
 @Data
 @Entity
-@Table(name = "example_first_entity")
-public class FirstEntity extends ItemEntity {
+@Table(name = "example_second_entity")
+public class SecondEntity extends ItemEntity {
 
-	private Date start_date;
+	private Date birth_date;
 }

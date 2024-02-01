@@ -4,10 +4,7 @@ import com.polishchuk.mschool.model.entity.base.BaseEntity;
 import com.polishchuk.mschool.model.entity.task.PassedTestingEntity;
 import com.polishchuk.mschool.model.entity.task.TaskEntity;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import lombok.experimental.SuperBuilder;
 
 import java.util.List;
@@ -48,6 +45,6 @@ public class UserEntity extends BaseEntity {
 	private List<TaskEntity> access_tasks;
 
 	@OneToMany(mappedBy = "user")
-	@OrderBy("date_passed desc")
+//	@OrderBy("date_passed desc")
 	private Set<PassedTestingEntity> passed_testing;
 }
